@@ -1,0 +1,110 @@
+spring:
+  application:
+    name: GateWay
+  cloud:
+    gateway:
+      routes:
+        - id: security-service
+          uri: lb://SECURITY-SERVICE
+          predicates:
+            - Path=/api/auth/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: security-service
+                fallbackuri: forward:/securityFallBack
+        - id: security-service
+          uri: lb://SECURITY-SERVICE
+          predicates:
+            - Path=/api/test/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: security-service
+                fallbackuri: forward:/securityFallBack
+        - id: admin-user-operations
+          uri: lb://Admin-USER-OPERATIONS
+          predicates:
+            - Path=/admin/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: admin-user-operations
+                fallbackuri: forward:/adminFallBack
+        - id: booking-service
+          uri: lb://BOOKING-SERVICE
+          predicates:
+            - Path=/book/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: booking-service
+                fallbackuri: forward:/bookingFallBack
+        - id: FARE-CALCULATOR
+          uri: lb://FARE-CALCULATOR
+          predicates:
+            - Path=/fare/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: fare-calculator
+                fallbackuri: forward:/fareFallBack
+        - id: payment-service
+          uri: lb://PAYMENT-SERVICE
+          predicates:
+            - Path=/pay/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: payment-service
+                fallbackuri: forward:/paymentFallBack
+        - id: ticket-producer
+          uri: lb://TICKET-PRODUCER
+          predicates:
+             - Path=/ticket/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: ticket-producer
+                fallbackuri: forward:/ticketFallBack
+        - id: admin-user-operations
+          uri: lb://Admin-USER-OPERATIONS
+          predicates:
+             - Path=/user/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: admin-user-operations
+                fallbackuri: forward:/userFallBack
+        - id: review
+          uri: lb://Review
+          predicates:
+             - Path=/review/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: review
+                fallbackuri: forward:/reviewFallBack
+eureka:
+  client:
+    register-with-eureka: true
+    fecth-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000000000
+
