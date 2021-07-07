@@ -1,0 +1,87 @@
+
+  .card23{
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0%;
+    width: 80vw;
+    padding: 20px;
+    text-align: center;
+  }
+  .card-title23{
+    margin-bottom: 20px;
+    font-size: xx-large;
+  }
+  .findBtn23{
+    width: 100%;
+    height: 50px;
+    border-radius: 0;
+  }
+  .custom-select{
+    border-radius: 0;
+    border-width: 2px;
+  }
+  .offer-card5{
+    margin-top: 75px;
+    margin-bottom: 75px;
+  }
+  /* .signUpBtn{
+    margin-top: 25px;
+    height: 50px;
+    width: 150px;
+    border-radius: 0;
+  } */
+  /* .dateselect{
+    border-style: solid;
+    width: 100%;
+    height: 37px;
+    border-color: lightgray;
+  } */
+  .errorMessage{
+    color: red;
+    margin-left: 20px;
+  }
+  
+  a {
+    cursor: pointer;
+    color: white;
+    font-weight: 700;
+  }
+  
+  a:hover{
+    text-decoration: none;
+  }
+  .fa1 {
+    padding: 20px;
+    font-size: 20px;
+    width: 100px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+  }
+  
+  .fa1:hover {
+      opacity: 0.7;
+  }
+  
+  .photo{
+      border-radius: 50%;
+  }
+  
+  .contact-Card{
+      margin-top: 75px;
+      margin-bottom: 75px;
+  }
+
+.bg-image1
+{
+  background: rgb(150, 9, 9)
+      url("https://www.graphicsprings.com/filestorage/stencils/1f3eb8af4a9317c56b75a1877be0949e.png?width=200&height=0");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#section-a {
+  background: #eaeaea;
+  color: #333;
+  padding-bottom: 2em;
+}
